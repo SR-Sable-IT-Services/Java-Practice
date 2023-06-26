@@ -11,6 +11,13 @@ public static void main(String args[]){
          rev=rev+real.charAt(i);
     }
     
-    System.out.print("'"+rev+"' this is a Reverse String Of '"+real+"'");
+    if(real.equals(rev))
+    {
+          System.out.println("its an Palindrome String");
+    }
+    else
+    {
+         System.out.println("its not an Palindrome String"); 
+    }
 }
 }
