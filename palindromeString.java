@@ -1,4 +1,4 @@
-/*Write a program to reverse the given number ?*/
+/*Write a program to reverse the given String ?*/
 
 class palindromeString{
 public static void main(String args[]){
@@ -11,6 +11,6 @@ public static void main(String args[]){
          rev=rev+real.charAt(i);
     }
     
-    System.out.print(rev);
+    System.out.print("'"+rev+"' this is a Reverse String Of '"+real+"'");
 }
 }
