@@ -1,9 +1,9 @@
 final class Employee{
-     final int empId;
-     final String empName;
-     final long empNo;
-     final String empDip;
-     final int empPin;
+private final int empId;
+private final String empName;
+private final long empNo;
+private final String empDip;
+private final int empPin;
 
     public Employee(int empId,String empName,long empNo,String empDip,int empPin)
     {
