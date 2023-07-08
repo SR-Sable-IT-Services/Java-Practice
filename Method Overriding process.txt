@@ -1,0 +1,68 @@
+faq:
+define Method Overriding process 
+================================
+
+====> The method with same method signature in PClass and CClass then PClass
+      method is replaced by CClass method while object creation is known as
+      Method Overriding process.
+====> only nonStatic method overriding process available in java 
+====> Same method Signature means,
+         same return_type
+         same method_name
+         same para_list
+         same para_type
+
+Case-1 : Instance method Overriding process(NonStatic method Overriding)
+Case-2 : Constructor Overriding process
+Case-3 : Static method Overriding process
+
+Case-1 : Instance method Overriding process(NonStatic method Overriding):
+  =>The Same instance method signature in PClass and CClass then the PClass
+Instance method is replaced by CClass Instance method while Object creation
+is known as 'Instance method Overriding process'.
+
+example :
+
+public class PClass
+{
+	 
+    public void m(int x) 
+    {
+    	System.out.println("********Parent Class m()********");
+    	System.out.println("value of x :"+x);
+    }
+}
+
+
+public class CClass extends PClass
+{
+
+	 public void m(int x)
+	    {
+	    	System.out.println("********Child Class m()********");
+	    	System.out.println("value of x :"+x);
+	    }
+}
+
+
+public class DemoInheritance6 
+{
+		public static void main(String[] args)  
+		{
+	       CClass ob = new CClass();
+	       ob.m(123); // method call
+		}
+}
+
+o/p :
+
+********Child Class m()********
+value of x :123
+
+Case-2 : Constructor Overriding process
+=======> There is no concept of Constructor Overriding process in Java because
+         the constructor have different names.
+              
+Case-3 : Static method Overriding process
+=======> There is no concept of static method Overriding process in Java,because
+         the methods are binded to classes and available within the classes.

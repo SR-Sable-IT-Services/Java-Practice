@@ -1,0 +1,264 @@
+*imp
+2.Inheritance:
+==============
+
+  =>The process of linking two classes with 'extends' keyword is known as
+Inheritance process.
+
+  =>In Inheritance process the members of ParentClass are available to 
+ChildClass,in this process we create object for ChildClass.
+
+syntax:
+class A 
+{
+  //PClass_body
+}
+class B extends A
+{
+ //CClass_body
+}
+
+object creation syntax:
+B ob = new B();
+
+==> In Inheritance process PClass is loaded onto Method_Area first and then CClass is loaded.
+==> In Inheritance process while Object creation PClass members are binded first and then 
+    CClass members are binded.
+===================================================================================
+Case-1 : Static members of ParentClass/SuperClass [contains variable method block] 
+Case-2 : Non-Static members of ParentClass/SuperClass [variable method block ]
+Case-3 : Constructors of ParentClass/SuperClass [constructor]
+==========================================================================================
+Case-1 : Static members of ParentClass/SuperClass [contains variable method block]
+======>  All the static members of ParentClass or SuperClass are available to ChildClass 
+         through extends keyword and can be accessed with ChildClass_name.
+
+exmple :
+public class PClass  // parent class 
+{
+	public static int a; // static variable 
+	public static void m1() // static method 
+    {
+    	System.out.println("======PClass m1()=====");
+    	System.out.println("the value of a : "+a);
+    }
+    static // static block
+    {
+    	System.out.println("====PClass Static Blocks====");
+    }
+	
+}
+ 
+ public class CClass extends PClass  // child class
+{
+	public static int b;   // Static variable 
+    public static void m2()   //Static merthod 
+    {
+   	System.out.println("=======CClass m2()======="); 
+   	System.out.println("the value of b : "+b);
+    }
+    static // Static blocks
+    {
+   	System.out.println("===CClass Static Blocks==="); 
+    }
+}
+
+public class DemoInheritance5 {
+
+	public static void main(String[] args)
+	{
+		   System.out.println("**************Using Class***************");	
+	       CClass.a=12;
+	       CClass.b=13;
+	       CClass.m1();
+	       CClass.m2();
+	       System.out.println("*********Using Object reference**********");
+	       CClass ob = new CClass();
+	       ob.a=100;
+	       ob.b=200;
+	       ob.m1();
+	       ob.m2();
+		}          
+		           
+	}
+	
+output :
+**************Using Class***************
+====PClass Static Blocks====
+===CClass Static Blocks===
+======PClass m1()=====
+the value of a : 12
+=======CClass m2()=======
+the value of b : 13
+*********Using Object reference**********
+======PClass m1()=====
+the value of a : 100
+=======CClass m2()=======
+the value of b : 200
+
+//  faq:
+//     define Empty Object reference?
+//  => when we create object for the class which is holding only static members
+//     then 'Empty Object reference' is created.
+
+//  faq:
+//     can we access static members of class using Object reference? 
+//  => Yes,we can access the static members of class using Object reference,
+//     because the Object reference generated from class or belongs to class.
+
+==============================================================================================
+
+Case-2 : Non-Static members of ParentClass/SuperClass [variable method block ]
+=======> In Inheritance process all the Non-Static members of ParentClass are
+         available to ChildClass through extends keyword,in this process the 
+         Non-Static members of ParentClass can be accessed with CClass Object 
+         reference.
+		 
+Note   : Inheritance process means,only one object is created and the object will
+         hold all the members of ParentClass and all the members of ChildClass.
+
+
+example:
+public class ParentClass  // super class
+{
+   public int v; // non static variable 
+   public void m1() // non static method 
+   {
+	   System.out.println("****Parent Class m1()****");
+	   System.out.println("Value of v :"+v);   
+   }
+      
+   { // non static block 
+	   System.out.println("****ParentClass Instance Block****");
+   }   
+   
+// Non-Static members of parent class : NonStatic Variable; NonStatic Method; Non-Static Block
+}
+
+
+public class ChildClass extends ParentClass // child class
+{
+    public int p; 
+    public void m2()
+    {
+    	System.out.println ("****ChildClass m2****");
+    	System.out.println("Value of p :"+p);
+    }
+    {
+    	System.out.println("****ChildClass Instance Block****");
+    }
+    
+// Non-Static member of Child Class : NonStatic Variable; NonStatic Method; Non-Static Block
+}
+
+
+public class DemoInheritance1 
+{
+	public static void main(String[] args) 
+	{
+        ChildClass ob = new ChildClass();  // Creating Object for Child_Class
+        ob.v=9696;  // whenever i want to load data onto variable a using obj_name.inst_var_Name
+        ob.p=2222;
+        ob.m1();   // ParentClass method call
+        ob.m2();   // ChildClass method Call	
+	}
+}
+
+==========================================================================================
+
+Case-3 : Constructors of ParentClass/SuperClass [constructor]
+
+ constructor are categorise into two type 
+ ========================================
+(i)0-parameter constructor from the ParentClass/SuperClass
+(ii)Parmeterized constructor from the ParentClass/SuperClass
+
+(i)0-parameter constructor from the ParentClass/SuperClass
+   =>when we have 0-parameter constructor in the PClass,then the compiler at
+compilation stage will add 'super()' to the CClass constructor and which is
+PClass con_call.
+
+example :
+
+public class ParentClass 
+{
+	public ParentClass() //using constructer 
+	{
+		System.out.println("====Parent Class Constructor====");
+	}
+}
+
+
+public class ChildClass extends ParentClass
+{
+	 public ChildClass() //Child Class Constructer
+     {
+    	 super();   
+ //====> brase mins cons_call 
+ //====> the compiler at compilation stage will add 'super()' 
+ //      to the CClass constructor and which is PClass con_call.
+
+    	System.out.println("====Child Class Constructer====");	
+     }
+}
+
+
+public class DemoInheritance2 
+{
+
+	public static void main(String[] args)
+	{
+	    ChildClass ob = new ChildClass();//
+	}
+
+}
+
+
+o/p :
+====Parent Class Constructor====
+====Child Class Constructer====
+------------------------------------------------------------------------------------------
+(ii)Parmeterized constructor from the ParentClass/SuperClass
+ ==> when we have Parameterized constructor in PClass,then we must add 
+'super()' to the CClass constructor and which is PClass_Con_Call.
+
+example :
+
+public class ParentClass
+{
+	public ParentClass(int x)
+	{
+		System.out.println("====Parent Class Constructer====");
+	    System.out.println("the value of x :"+x);   	
+	}
+
+}
+
+public class ChildClass extends ParentClass
+{
+	public ChildClass(int x)
+	{
+	   super(x); // Parent Class Cons_Call
+	}
+}
+
+
+public class DemoInheritance3 {
+
+	public static void main(String[] args) 
+	{
+	   ChildClass ob = new ChildClass(777);
+	}
+
+}
+
+o/p :
+====Parent Class Constructer====
+the value of x :777
+
+Summary:
+  =>PClass constructors are executed using 'super()' declared part of CClass
+Constructors.
+
+
+===========================================================================================
