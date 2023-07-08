@@ -23,7 +23,7 @@ abstract class PetAnimals implements Animals {
 }
 
 class Dog extends PetAnimals{
-        void eat()
+       public void eat()
         {
         System.out.println("Dog eat Anything");
         }
