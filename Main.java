@@ -1,24 +1,12 @@
-// Superclass Car
-class Car {
-    public void start() {
-        System.out.println("Car is starting...");
-    }
-}
-
-// Subclass SportsCar
-class SportsCar extends Car {
-    @Override
-    public void start() {
-        super.start();  // Calling superclass start() method
-        System.out.println("SportsCar is starting...");
-    }
-}
-
-// Main class
-class Main {
+public class NullPointerExceptionExample {
     public static void main(String[] args) {
-        SportsCar sportsCar = new SportsCar();
-        sportsCar.start();  // Calling subclass start() method
+        try {
+            String str = null;
+            int length = str.length(); // Attempt to access length of null reference
+            System.out.println("Length: " + length);
+        } catch (NullPointerException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
     }
 }
 
