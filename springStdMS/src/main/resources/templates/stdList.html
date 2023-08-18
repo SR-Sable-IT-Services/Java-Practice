@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student List</title>
+    <style>
+        .view-button {
+            background-color: green;
+            color: white;
+        }
+        
+        .update-button {
+            background-color: blue;
+            color: white;
+        }
+        
+        .delete-button {
+            background-color: red;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Student List</h1>
+    <table border="1">
+        <tr>
+            <th>Student ID</th>
+            <th>Name</th>
+            <th>DOB</th>
+            <th>Gender</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>School</th>
+            <th>View</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+        <tr th:each="student : ${students}">
+            <td th:text="${student.studentId}"></td>
+            <td th:text="${student.name}"></td>
+            <td th:text="${student.dob}"></td>
+            <td th:text="${student.gender}"></td>
+            <td th:text="${student.email}"></td>
+            <td th:text="${student.address}"></td>
+            <td th:text="${student.school}"></td>
+            <td><button class="view-button">View</button></td>
+            <td><button class="update-button">Update</button></td>
+            <td><button class="delete-button">Delete</button></td>
+        </tr>
+    </table>
+</body>
+</html>
