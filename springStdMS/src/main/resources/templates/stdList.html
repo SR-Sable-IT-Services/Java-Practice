@@ -4,34 +4,79 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student List</title>
-    <style>
+   <style>
+        /* Your CSS styles go here */
+        body {
+            background: url('img/02.jpg');
+            background-size: cover;
+            font-family: Arial, sans-serif;
+        }
+        table {
+            width: 700px;
+            margin: 0 auto;
+            border-collapse: collapse;
+            background-color: rgba(255, 255, 255, 0.9);
+            border: 1px solid #333;
+        }
+        th {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: left;
+        }
+        td {
+            padding: 8px;
+        }
+        input[type="text"],
+        input[type="date"],
+        select {
+            width: 95%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="date"] {
+            width: 50%;
+        }
+        input[type="radio"] {
+            margin-right: 5px;
+        }
+        input[type="submit"] {
+            padding: 8px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
         .view-button {
-            background-color: green;
+            background-color: #28a745; /* Shade of green */
             color: white;
         }
-        
         .update-button {
-            background-color: blue;
+            background-color: #17a2b8; /* Shade of sky blue */
             color: white;
         }
-        
         .delete-button {
-            background-color: red;
+            background-color: #dc3545; /* Shade of red */
             color: white;
+        }
+        .all-students-button {
+            float: right;
+            margin-top: -20px;
+            margin-right: 20px;
+            text-decoration: none;
+            color: #333;
+        }
+        .centered-heading {
+            text-align: center;
         }
     </style>
 </head>
 <body>
-    <h1>Student List</h1>
+    <h1 class="centered-heading">Student List</h1>
     <table border="1">
         <tr>
             <th>Student ID</th>
             <th>Name</th>
-            <th>DOB</th>
-            <th>Gender</th>
-            <th>Email</th>
-            <th>Address</th>
-            <th>School</th>
             <th>View</th>
             <th>Update</th>
             <th>Delete</th>
@@ -39,14 +84,9 @@
         <tr th:each="student : ${students}">
             <td th:text="${student.studentId}"></td>
             <td th:text="${student.name}"></td>
-            <td th:text="${student.dob}"></td>
-            <td th:text="${student.gender}"></td>
-            <td th:text="${student.email}"></td>
-            <td th:text="${student.address}"></td>
-            <td th:text="${student.school}"></td>
-            <td><button class="view-button">View</button></td>
-            <td><button class="update-button">Update</button></td>
-            <td><button class="delete-button">Delete</button></td>
+            <td><a th:href="@{'view?id=' + ${student.studentId}}"><button class="view-button">View</button></a></td>
+            <td><a th:href="@{'update?id=' + ${student.studentId}}"><button class="update-button">Update</button></a></td>
+            <td><a th:href="@{'delete?id=' + ${student.studentId}}"><button class="delete-button">Delete</button></a></td>
         </tr>
     </table>
 </body>

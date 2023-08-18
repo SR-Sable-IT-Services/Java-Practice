@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Details</title>
+    <style>
+        /* Your CSS styles go here */
+        body {
+            background: url('img/02.jpg');
+            background-size: cover;
+            font-family: Arial, sans-serif;
+        }
+        .student-header {
+            text-align: center; /* Center the headline */
+            margin-top: 20px; /* Add some space from the top */
+        }
+        .student-table {
+            width: 700px;
+            margin: 0 auto;
+            border-collapse: collapse;
+            background-color: rgba(255, 255, 255, 0.9);
+            border: 1px solid #333;
+        }
+        th {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: left;
+        }
+        td {
+            padding: 8px;
+            border-left: 1px solid #ccc;
+        }
+        th:first-child,
+        td:first-child {
+            border-left: none;
+        }
+        tr {
+            border-bottom: 1px solid #ccc;
+        }
+        /* Your other styles... */
+    </style>
+</head>
+<body>
+    <div class="student-header">
+        <h2>Student Details</h2>
+    </div>
+    <table class="student-table">
+        <tr class="student-row">
+            <th class="student-cell">Detail</th>
+            <th class="student-cell">Value</th>
+        </tr>
+        <tr class="student-row">
+            <td class="student-cell"><strong>Student ID:</strong></td>
+            <td class="student-cell" th:text="${student.studentId}"></td>
+        </tr>
+        <tr class="student-row">
+            <td class="student-cell"><strong>Name:</strong></td>
+            <td class="student-cell" th:text="${student.name}"></td>
+        </tr>
+        <tr class="student-row">
+            <td class="student-cell"><strong>DOB:</strong></td>
+            <td class="student-cell" th:text="${student.dob}"></td>
+        </tr>
+        <tr class="student-row">
+            <td class="student-cell"><strong>Gender:</strong></td>
+            <td class="student-cell" th:text="${student.gender}"></td>
+        </tr>
+        <tr class="student-row">
+            <td class="student-cell"><strong>Email:</strong></td>
+            <td class="student-cell" th:text="${student.email}"></td>
+        </tr>
+        <tr class="student-row">
+            <td class="student-cell"><strong>Address:</strong></td>
+            <td class="student-cell" th:text="${student.address}"></td>
+        </tr>
+        <tr class="student-row">
+            <td class="student-cell"><strong>School:</strong></td>
+            <td class="student-cell" th:text="${student.school}"></td>
+        </tr>
+    </table>
+</body>
+</html>
